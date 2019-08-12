@@ -13,3 +13,8 @@ class InitialRitualListState extends RitualListState {
   final List<RitualModel> models;
   InitialRitualListState(this.models) : super(models);
 }
+
+class UpdatedRitualListState extends RitualListState {
+  final List<RitualModel> models;
+  UpdatedRitualListState(this.models) : super(models);
+}

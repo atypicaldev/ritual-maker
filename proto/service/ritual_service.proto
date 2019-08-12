@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package ritual.service;
+
+import "models/ritual.proto";
+
+option go_package = "github.com/atypicaldev/ritual-maker/proto/service";
+
+service RitualService {
+  rpc ListRituals (stream ListRitualsRequest) returns (stream ListRitualsResponse) {}
+  rpc CreateRitual (CreateRitualRequest) returns (stream CreateRitualResponse) {}
+  rpc UpdateRitual (UpdateRitualRequest) returns (UpdateRitualResponse) {}
+  rpc SubscribeToRitual (RitualSubscriptionRequest) returns (RitualSubscriptionResponse) {}
+  rpc UnSubscribeToRitual (RitualUnsubscriptionRequest) returns (RitualUnsubscriptionResponse) {}
+}
+
+message ListRitualsRequest {
+  string user_id = 1;
+  int64 limit = 2;
+  int64 page = 3;
+}
+message ListRitualsResponse {
+  repeated ritual.models.Ritual rituals = 1;
+}
+
+message CreateRitualRequest {
+  string title = 1;
+  string user_id = 2;
+}
+message CreateRitualResponse {
+  ritual.models.Ritual ritual = 1;
+}
+
+message UpdateRitualRequest {
+  ritual.models.Ritual ritual = 1;
+}
+message UpdateRitualResponse {
+  ritual.models.Ritual ritual = 1;
+}
+
+message RitualSubscriptionRequest {
+  string user_id = 1;
+}
+message RitualSubscriptionResponse {}
+
+message RitualUnsubscriptionRequest {
+  string user_id = 1;
+}
+message RitualUnsubscriptionResponse {}

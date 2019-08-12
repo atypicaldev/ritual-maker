@@ -12,3 +12,10 @@ class AddRitualEvent extends RitualListEvent {
 
   AddRitualEvent(this.model) : super([model]);
 }
+
+class FetchRitualsEvent extends RitualListEvent {
+  final int page;
+  final String userId;
+
+  FetchRitualsEvent({this.page = 0, @required this.userId}) : super([page]);
+}

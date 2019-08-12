@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package ritual.models;
+
+option go_package = "github.com/atypicaldev/ritual-maker/proto/model";
+
+message Ritual {
+  // Id of the ritual
+  string id = 1;
+  // Id of the user that created the ritual
+  string user_id = 2;
+  // Title of the ritual
+  string title = 3;
+  // List of RitualSteps for the Ritual
+  repeated RitualStep steps = 4;
+}
+
+message RitualStep {
+  // The instructions for a given ritual Step
+  string description = 1;
+  // Marks the RitualStep as completed or not
+  bool completed = 2;
+  // Lays out the estimated minutes for the given ritual step.
+  int64 estimated_minutes = 3;
+}
